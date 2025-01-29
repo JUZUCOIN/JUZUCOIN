@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic JUZU COIN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
+    <style>
+        :root {
+            --color-dark: #0f3715;
+            --color-neon: #a8cf0d;
+        }
+
+        body {
+            background: var(--color-dark);
+            font-family: 'Raleway', sans-serif;
+            color: white;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #0f3715, #1a4b23);
+            overflow: hidden;
+        }
+
+        .animated-bg::before,
+        .animated-bg::after {
+            content: '';
+            position: absolute;
+            width: 200vmax;
+            height: 200vmax;
+            top: -100vmax;
+            left: -100vmax;
+            animation: rotate 60s linear infinite;
+            background-image: 
+                radial-gradient(circle, rgba(168, 207, 13, 0.1) 1px, transparent 1px),
+                radial-gradient(circle, rgba(168, 207, 13, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            transform-origin: center center;
+        }
+
+        .animated-bg::after {
+            animation: rotate 45s linear infinite reverse;
+            opacity: 0.5;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .glow-text {
+            text-shadow: 0 0 10px rgba(168, 207, 13, 0.5);
+        }
+
+        .animated-text {
+            background: linear-gradient(to right, #a8cf0d, #ffffff, #a8cf0d);
+            background-size: 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: animate-text 5s linear infinite;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .social-icons {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(168, 207, 13, 0.1);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(168, 207, 13, 0.3);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2) rotate(8deg);
+            background: rgba(168, 207, 13, 0.2);
+            box-shadow: 0 0 20px rgba(168, 207, 13, 0.4);
+        }
+
+        .social-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(168, 207, 13, 0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-icon:hover::after {
+            opacity: 1;
+        }
+
+        .glow-button {
+            background: var(--color-neon);
+            color: var(--color-dark);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .glow-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(45deg);
+            animation: buttonGlow 3s linear infinite;
+        }
+
+        @keyframes buttonGlow {
+            0% { transform: rotate(45deg) translateY(-100%); }
+            100% { transform: rotate(45deg) translateY(100%); }
+        }
+
+        .feature-card {
+            background: rgba(15, 55, 21, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 207, 13, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(168, 207, 13, 0.1), transparent);
+            transition: 0.5s;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(168, 207, 13, 0.2);
+        }
+
+        nav a {
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: var(--color-neon);
+            transition: 0.5s;
+        }
+
+        nav a:hover::before {
+            left: 0;
+        }
+
+        @keyframes animate-text {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+
+    <div class="social-icons">
+        <a href="https://x.com/JuzuTechCoin?t=EC_WJ0g_kci7QVgdZG7mbw&s=09" class="social-icon" target="_blank" title="Twitter">
+            <i data-feather="twitter" class="text-[#a8cf0d]"></i>
+        </a>
+        <a href="https://t.me/+WiSdyHfcmpE4OTZl" class="social-icon" target="_blank" title="Telegram">
+            <i data-feather="send" class="text-[#a8cf0d]"></i>
+        </a>
+        <a href="https://www.instagram.com/juzu_technology?igsh=MTRram0xeGhidWJpNA==" class="social-icon" target="_blank" title="Instagram">
+            <i data-feather="instagram" class="text-[#a8cf0d]"></i>
+        </a>
+        <a href="https://www.tiktok.com/@juzu.technology?_t=ZS-8tR6vqHKxGC&_r=1" class="social-icon" target="_blank" title="TikTok">
+            <i data-feather="video" class="text-[#a8cf0d]"></i>
+        </a>
+    </div>
+
+    <header class="py-6 bg-opacity-50 backdrop-blur-md shadow-md relative">
+        <div class="container mx-auto flex flex-wrap items-center justify-between px-4">
+            <h1 class="text-2xl md:text-3xl animated-text">JUZU COIN</h1>
+            <nav class="flex flex-wrap gap-4 md:gap-6 mt-4 md:mt-0">
+                <a href="#" class="text-sm md:text-base">About</a>
+                <a href="#" class="text-sm md:text-base">Features</a>
+                <a href="#" class="text-sm md:text-base">Roadmap</a>
+                <a href="https://pumpfun.io" target="_blank" class="glow-button px-6 py-2 rounded-full text-sm md:text-base">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="text-center py-20 px-4 relative">
+        <h2 class="text-3xl sm:text-4xl md:text-6xl animated-text mb-6 glow-text">
+            The Future of Digital Currency
+        </h2>
+        <p class="text-base sm:text-lg md:text-xl mb-8 font-light">
+            Blazing-fast transactions and minimal fees with JUZU Coin, powered by Solana.
+        </p>
+        <a href="https://pumpfun.io" target="_blank" class="glow-button px-8 py-3 rounded-full text-sm md:text-lg">
+            Buy JUZU Now
+        </a>
+    </section>
+
+    <section class="container mx-auto px-4 py-16">
+        <h3 class="text-2xl md:text-3xl font-light text-center mb-12 glow-text">Why Choose JUZU Coin?</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="feature-card p-6 rounded-lg text-center">
+                <i data-feather="zap" class="w-12 h-12 text-[#a8cf0d] mb-4"></i>
+                <h4 class="text-xl font-semibold mb-2">Solana Speed</h4>
+                <p class="font-light">65,000 TPS with sub-second finality, powered by Solana's lightning-fast network.</p>
+            </div>
+            <div class="feature-card p-6 rounded-lg text-center">
+                <i data-feather="dollar-sign" class="w-12 h-12 text-[#a8cf0d] mb-4"></i>
+                <h4 class="text-xl font-semibold mb-2">Minimal Fees</h4>
+                <p class="font-light">Enjoy extremely low transaction costs on the Solana blockchain.</p>
+            </div>
+            <div class="feature-card p-6 rounded-lg text-center">
+                <i data-feather="shield" class="w-12 h-12 text-[#a8cf0d] mb-4"></i>
+                <h4 class="text-xl font-semibold mb-2">Secure & Reliable</h4>
+                <p class="font-light">Built on Solana's battle-tested security and reliable infrastructure.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-opacity-50 backdrop-blur-md py-6 text-center relative">
+        <p class="text-sm md:text-base font-light">© 2025 JUZU Coin. All rights reserved.</p>
+    </footer>
+
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>
